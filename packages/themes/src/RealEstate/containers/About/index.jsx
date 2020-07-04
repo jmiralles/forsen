@@ -17,6 +17,9 @@ const About = ({
   name,
   title,
   text,
+  text2,
+  text3,
+  text4,
   gallery,
   WrapperProps,
   ContainerProps,
@@ -32,6 +35,10 @@ const About = ({
         <Fade bottom cascade duration={600}>
           <Typography {...TitleProps}>{title}</Typography>
           <Typography {...TextProps}>{text}</Typography>
+          <Typography {...TextProps}>{text2}</Typography>
+          <Typography {...TextProps}>{text3}</Typography>
+          <Typography {...TextProps}>{text4}</Typography>
+
         </Fade>
         <Grid {...GridProps}>
           <Gallery

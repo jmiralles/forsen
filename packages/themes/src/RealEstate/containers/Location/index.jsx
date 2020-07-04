@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
-import CountUp from 'react-countup';
 import { Marker } from '@react-google-maps/api';
 
 import Box from '@pagerland/common/src/components/Box';
 import Container from '@pagerland/common/src/components/Container';
-import Icon from '@pagerland/common/src/components/Icon';
 import Typography from '@pagerland/common/src/components/Typography';
-import Grid from '@pagerland/common/src/components/Grid';
 import GoogleMaps from '@pagerland/common/src/components/GoogleMaps';
 
 import data from '../../data';
@@ -20,18 +17,11 @@ const Location = ({
   title,
   text,
   map,
-  counters,
   WrapperProps,
   ContainerProps,
   CaptionProps,
   TitleProps,
   TextProps,
-  CountersWrapperProps,
-  CountersGridProps,
-  CounterProps,
-  CounterIconProps,
-  CounterValueProps,
-  CounterTitleProps,
   GoogleMapsProps,
 }) => (
   <Box name={name} {...WrapperProps}>
@@ -43,26 +33,6 @@ const Location = ({
         </Fade>
       </Box>
     </Container>
-    <Box {...CountersWrapperProps}>
-      <Container>
-        <Grid {...CountersGridProps}>
-          {counters.map((counter, i) => (
-            <Fade bottom cascade duration={600} key={i} delay={i * 100}>
-              <Box {...CounterProps}>
-                <Icon {...CounterIconProps} {...counter.IconProps} />
-                <div>
-                  <Typography {...CounterValueProps}>
-                    <CountUp end={counter.counter.value} />
-                    {counter.counter.unit}
-                  </Typography>
-                  <Typography {...CounterTitleProps}>{counter.title}</Typography>
-                </div>
-              </Box>
-            </Fade>
-          ))}
-        </Grid>
-      </Container>
-    </Box>
     <GoogleMaps {...GoogleMapsProps} center={map.cords}>
       <Marker icon={Pin} position={map.cords} />
     </GoogleMaps>

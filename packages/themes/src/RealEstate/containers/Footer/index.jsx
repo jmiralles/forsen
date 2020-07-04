@@ -44,41 +44,9 @@ const Footer = ({
       <Fade cascade bottom duration={600}>
         <Typography {...TitleProps}>{title}</Typography>
       </Fade>
-      <Grid {...GridProps}>
-        <Box {...CaptionProps}>
-          <Fade cascade bottom duration={600}>
-            <Typography {...TextProps}>{text}</Typography>
-            <Button {...CtaProps} {...cta}>
-              {cta.label}
-            </Button>
-          </Fade>
-        </Box>
-        <Grid {...FeaturesGridProps}>
-          {features.map((feature, key) => (
-            <Fade cascade bottom duration={600} delay={key * 100} key={key}>
-              <Box {...FeatureItemProps}>
-                <Icon {...FeatureIconProps} {...feature.IconProps} />
-                <Box>
-                  <Typography {...FeatureTitleProps}>{feature.title}</Typography>
-                  <Typography {...FeatureTextProps}>{feature.text}</Typography>
-                </Box>
-              </Box>
-            </Fade>
-          ))}
-        </Grid>
-      </Grid>
+
       <Box {...CopyrightWrapperProps}>
         <Typography {...CopyrightTextProps}>{copyright}</Typography>
-
-        <Box {...SocialLinksProps}>
-          {socialLinks?.map((socialLink, key) => (
-            <Fade left duration={600} key={socialLink.title} distance="10px" delay={100 * key}>
-              <Button as="a" href={socialLink.href} title={socialLink.title} {...SocialLinkProps}>
-                <Icon icon={socialLink.icon} />
-              </Button>
-            </Fade>
-          ))}
-        </Box>
       </Box>
     </Container>
   </Box>

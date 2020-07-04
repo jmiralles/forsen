@@ -34,8 +34,6 @@ const Contact = ({
   DetailsTextProps,
   DetailsInfoItemProps,
   DetailsIconProps,
-  SocialLinksProps,
-  SocialLinkProps,
   FormProps,
   FormTitleProps,
   FormButtonProps,
@@ -62,15 +60,6 @@ const Contact = ({
               </Box>
             ))}
           </Fade>
-          <Box {...SocialLinksProps}>
-            {details.socialLinks?.map((socialLink, key) => (
-              <Fade left duration={600} key={socialLink.title} distance="10px" delay={100 * key}>
-                <Button as="a" href={socialLink.href} title={socialLink.title} {...SocialLinkProps}>
-                  <Icon icon={socialLink.icon} />
-                </Button>
-              </Fade>
-            ))}
-          </Box>
         </Box>
         <Box {...FormProps}>
           <Formik

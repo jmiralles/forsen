@@ -146,9 +146,9 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
   WrapperProps: {
-    color: 'gray.6',
-    stickyBgColor: 'gray.6',
-    stickyColor: 'gray.0',
+    color:  'gray.6',
+    stickyBgColor: 'secondary',
+    stickyColor: 'gray.6',
   },
   ContainerProps: {
     py: 24,

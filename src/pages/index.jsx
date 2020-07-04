@@ -8,13 +8,9 @@ import {
   Navbar,
   Welcome,
   About,
+  Materials,
   Location,
-  Exterior,
-  Interior,
-  Surroundings,
-  Gallery,
   Contact,
-  SimilarProperties,
   Footer,
 } from '@pagerland/themes/src/RealEstate/containers';
 
@@ -29,18 +25,14 @@ const RealEstate = ({ url }) => (
       <meta name="theme-color" content={theme.colors.primary} />
       <meta property="og:image" content={`${url}${preview}`} />
     </Helmet>
-    <SEO title="Real Estate" />
+    <SEO title="Forsen SL" />
 
     <Navbar />
     <Welcome name="" />
     <About name="about" />
+    <Materials name="materials" />
     <Location name="location" />
-    <Exterior name="exterior" />
-    <Interior name="interior" />
-    <Surroundings name="surroundings" />
-    <Gallery name="gallery" />
     <Contact name="contact" />
-    <SimilarProperties name="similar-properties" />
     <Footer name="about-us" />
   </Theme>
 );
