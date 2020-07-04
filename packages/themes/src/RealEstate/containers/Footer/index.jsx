@@ -6,9 +6,6 @@ import Fade from 'react-reveal/Fade';
 import Box from '@pagerland/common/src/components/Box';
 import Container from '@pagerland/common/src/components/Container';
 import Typography from '@pagerland/common/src/components/Typography';
-import Button from '@pagerland/common/src/components/Button';
-import Grid from '@pagerland/common/src/components/Grid';
-import Icon from '@pagerland/common/src/components/Icon';
 
 import ArrowRight from '@pagerland/icons/src/line/ArrowRight';
 
@@ -17,27 +14,12 @@ import data from '../../data';
 const Footer = ({
   name,
   title,
-  text,
-  cta,
   copyright,
-  features,
-  socialLinks,
   WrapperProps,
   ContainerProps,
   TitleProps,
-  GridProps,
-  TextProps,
-  CaptionProps,
-  CtaProps,
-  FeaturesGridProps,
-  FeatureItemProps,
-  FeatureIconProps,
-  FeatureTitleProps,
-  FeatureTextProps,
   CopyrightWrapperProps,
   CopyrightTextProps,
-  SocialLinksProps,
-  SocialLinkProps,
 }) => (
   <Box name={name} {...WrapperProps}>
     <Container {...ContainerProps}>
