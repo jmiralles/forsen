@@ -2,9 +2,9 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: 'Pagerland Gatsby',
-    description: '',
-    author: 'Pagerland Team',
+    title: 'Hormigón, Áridos y Excavaciones',
+    description: 'Somos uns empresa familiar dedicada a la extracción, lavado, triturado y clasificado de áridos.',
+    author: '',
   },
   pathPrefix: process.env.GATSBY_APP_DIR || '',
   plugins: [

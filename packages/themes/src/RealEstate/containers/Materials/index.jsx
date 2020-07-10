@@ -5,6 +5,7 @@ import Fade from 'react-reveal/Fade';
 
 import Box from '@pagerland/common/src/components/Box';
 import Typography from '@pagerland/common/src/components/Typography';
+import Container from '@pagerland/common/src/components/Container';
 
 import ArrowRight from '@pagerland/icons/src/line/ArrowRight';
 import data from '../../data';
@@ -13,14 +14,25 @@ import { StyledGrid, StyledImg } from './styled.components';
 const Materials = ({
   name,
   sections,
+  title,
   WrapperProps,
   GridProps,
   ImgProps,
+  ContainerProps,
   CaptionProps,
+  TopTitleProps,
+  BoxProps,
   TitleProps,
   TextProps,
 }) => (
   <Box name={name} {...WrapperProps}>
+    <Container {...ContainerProps}>
+      <Box {...BoxProps}>
+        <Fade bottom cascade duration={600}>
+          <Typography {...TopTitleProps}>{title}</Typography>
+        </Fade>
+      </Box>
+    </Container>
     <StyledGrid {...GridProps}>
       {sections.map((section, key) => (
         <React.Fragment key={key}>
@@ -56,6 +68,11 @@ Materials.propTypes = {
 };
 
 Materials.defaultProps = {
+  WrapperProps: {
+    overflow: 'hidden',
+    pt: 80,
+    pb: 0,
+  },
   GridProps: {
     gridTemplateColumns: {
       _: '1fr',
@@ -88,6 +105,15 @@ Materials.defaultProps = {
     alignItems: 'flex-start',
     justifyContent: 'center',
     flexDirection: 'column',
+  },
+  TopTitleProps: {
+    as: 'h2',
+    variant: 'h2',
+    mb: 4,
+  },
+  BoxProps: {
+    maxWidth: 736,
+    mx: 'auto',
   },
   TitleProps: {
     as: 'h3',

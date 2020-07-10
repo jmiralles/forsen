@@ -15,13 +15,11 @@ import Pin from '../../assets/Pin.svg';
 const Location = ({
   name,
   title,
-  text,
   map,
   WrapperProps,
   ContainerProps,
   CaptionProps,
   TitleProps,
-  TextProps,
   GoogleMapsProps,
 }) => (
   <Box name={name} {...WrapperProps}>
@@ -29,7 +27,6 @@ const Location = ({
       <Box {...CaptionProps}>
         <Fade bottom cascade duration={600}>
           <Typography {...TitleProps}>{title}</Typography>
-          <Typography {...TextProps}>{text}</Typography>
         </Fade>
       </Box>
     </Container>

@@ -66,9 +66,9 @@ function Index({ description, lang, meta, title }) {
 }
 
 Index.defaultProps = {
-  lang: 'en',
-  meta: [],
-  description: '',
+  lang: 'es',
+  meta: ['áridos', 'hormigón', 'excavaciones'],
+  description: 'Somos uns empresa familiar dedicada a la extracción, lavado, triturado y clasificado de áridos',
 };
 
 Index.propTypes = {

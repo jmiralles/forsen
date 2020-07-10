@@ -14,7 +14,7 @@ import {
   Footer,
 } from '@pagerland/themes/src/RealEstate/containers';
 
-import preview from '@pagerland/themes/src/RealEstate/assets/preview.jpg';
+import preview from '@pagerland/themes/src/RealEstate/assets/escavadora.jpg';
 
 import SEO from '../components/SEO';
 
@@ -42,7 +42,7 @@ RealEstate.propTypes = {
 };
 
 RealEstate.defaultProps = {
-  url: 'https://mypags.app/gatsby/',
+  url: 'https://www.forsen.es',
 };
 
 export default RealEstate;
