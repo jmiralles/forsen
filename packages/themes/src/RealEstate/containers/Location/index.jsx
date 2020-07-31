@@ -11,6 +11,7 @@ import GoogleMaps from '@pagerland/common/src/components/GoogleMaps';
 import data from '../../data';
 import { googleMapsStyle } from '../../styles';
 import Pin from '../../assets/Pin.svg';
+import Local from '../../Local';
 
 const Location = ({
   name,
@@ -20,13 +21,18 @@ const Location = ({
   ContainerProps,
   CaptionProps,
   TitleProps,
+  TextProps,
+  text,
   GoogleMapsProps,
 }) => (
   <Box name={name} {...WrapperProps}>
     <Container {...ContainerProps}>
       <Box {...CaptionProps}>
         <Fade bottom cascade duration={600}>
-          <Typography {...TitleProps}>{title}</Typography>
+          <Typography {...TitleProps}><Local code={title} /></Typography>
+        </Fade>
+        <Fade bottom cascade duration={600}>
+          <Typography {...TextProps}><Local code={text} /></Typography>
         </Fade>
       </Box>
     </Container>

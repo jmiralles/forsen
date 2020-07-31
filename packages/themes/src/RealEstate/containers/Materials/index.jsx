@@ -10,6 +10,7 @@ import Container from '@pagerland/common/src/components/Container';
 import ArrowRight from '@pagerland/icons/src/line/ArrowRight';
 import data from '../../data';
 import { StyledGrid, StyledImg } from './styled.components';
+import Local from '../../Local';
 
 const Materials = ({
   name,
@@ -29,7 +30,7 @@ const Materials = ({
     <Container {...ContainerProps}>
       <Box {...BoxProps}>
         <Fade bottom cascade duration={600}>
-          <Typography {...TopTitleProps}>{title}</Typography>
+          <Typography {...TopTitleProps}><Local code={title} /></Typography>
         </Fade>
       </Box>
     </Container>
@@ -39,8 +40,8 @@ const Materials = ({
           <StyledImg {...ImgProps} {...section.ImgProps} />
           <Box {...CaptionProps}>
             <Fade cascade bottom duration={600}>
-              <Typography {...TitleProps}>{section.title}</Typography>
-              <Typography {...TextProps}>{section.text}</Typography>
+              <Typography {...TitleProps}><Local code={section.title} /></Typography>
+              <Typography {...TextProps}><Local code={section.text} /></Typography>
             </Fade>
           </Box>
         </React.Fragment>

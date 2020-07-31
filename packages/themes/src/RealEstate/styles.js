@@ -2,12 +2,12 @@ import { css } from 'styled-components';
 
 export const space = [0, 4, 8, 16, 32, 64];
 
-// verd forsen #4e9e52
-// groc forsen #f0eb5f
+// verd forsen #299547
+// groc forsen #f2e846
 
 export const colors = {
-  brand: '#f0eb5f',
-  secondary: '#4e9e52',
+  brand: '#f2e846',
+  secondary: '#299547',
   error: '#EB5757',
   success: '#27AE60',
   shades: {

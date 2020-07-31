@@ -16,12 +16,12 @@ import Icon from '@pagerland/common/src/components/Icon';
 import ParallaxBackground from '../../components/ParallaxBackground';
 
 import data from '../../data';
+import Local from '../../Local';
 
 const Welcome = ({
   name,
   background,
   title,
-  price,
   features,
   cta,
   WrapperProps,
@@ -42,8 +42,7 @@ const Welcome = ({
       <Container {...ContainerProps}>
         <Box {...CaptionProps}>
           <Fade bottom cascade duration={600}>
-            <Typography {...TitleProps}>{title}</Typography>
-            <Typography {...PriceProps}>{price}</Typography>
+            <Typography {...TitleProps}><Local code={title} /></Typography>
             <Grid {...GridProps}>
               {features.map((feature, i) => (
                 <Box {...FeatureProps} key={i}>
@@ -52,7 +51,9 @@ const Welcome = ({
                 </Box>
               ))}
             </Grid>
-            <Button {...CtaProps} {...cta} />
+            <Button {...CtaProps} {...cta} >
+                <Local code={cta.children} /> 
+            </Button>
           </Fade>
         </Box>
       </Container>

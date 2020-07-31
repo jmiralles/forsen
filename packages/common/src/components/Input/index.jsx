@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { Collapse } from 'react-collapse';
+import Local from '../../../../themes/src/RealEstate/Local';
 
 import {
   ErrorMessage,
@@ -10,7 +11,7 @@ import {
   Label,
   StyledInput,
   StyledTextarea,
-  Wrapper,
+  Wrapper
 } from './styled.components';
 
 /**
@@ -59,13 +60,13 @@ const Input = ({
         focused,
         error: !!error,
         success: success || (!error && touched),
-        [type]: !!type,
+        [type]: !!type
       })}
       {...WrapperProps}
     >
       {label && (
         <Label htmlFor={name} {...LabelProps}>
-          {label}
+          <Local code={label} />
         </Label>
       )}
       <InputWrapper {...InputWrapperProps}>
@@ -82,7 +83,9 @@ const Input = ({
       </InputWrapper>
 
       <Collapse isOpened={!!error}>
-        <ErrorMessage {...ErrorMessageProps}>{error}</ErrorMessage>
+        <ErrorMessage {...ErrorMessageProps}>
+          <Local code={error} />
+        </ErrorMessage>
       </Collapse>
     </Wrapper>
   );
@@ -148,7 +151,7 @@ Input.propTypes = {
   /**
    * Additional props for error message.
    */
-  ErrorMessageProps: PropTypes.object,
+  ErrorMessageProps: PropTypes.object
 };
 
 export default Input;

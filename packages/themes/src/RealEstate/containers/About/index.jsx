@@ -12,6 +12,7 @@ import Gallery from '@pagerland/common/src/components/Gallery';
 
 import { StyledImg } from './styled.components';
 import data from '../../data';
+import Local from '../../Local';
 
 const About = ({
   name,
@@ -28,16 +29,18 @@ const About = ({
   TextProps,
   GridProps,
   ImgProps,
-}) => (
+}) => {
+ 
+  return (
   <Box name={name} {...WrapperProps}>
     <Container {...ContainerProps}>
       <Box {...CaptionProps}>
         <Fade bottom cascade duration={600}>
-          <Typography {...TitleProps}>{title}</Typography>
-          <Typography {...TextProps}>{text}</Typography>
-          <Typography {...TextProps}>{text2}</Typography>
-          <Typography {...TextProps}>{text3}</Typography>
-          <Typography {...TextProps}>{text4}</Typography>
+          <Typography {...TitleProps}><Local code={title} /></Typography>
+          <Typography {...TextProps}><Local code={text} /></Typography>
+          <Typography {...TextProps}><Local code={text2} /></Typography>
+          <Typography {...TextProps}><Local code={text3} /></Typography>
+          <Typography {...TextProps}><Local code={text4} /></Typography>
 
         </Fade>
         <Grid {...GridProps}>
@@ -52,8 +55,8 @@ const About = ({
         </Grid>
       </Box>
     </Container>
-  </Box>
-);
+  </Box>)
+};
 
 About.propTypes = {
   name: PropTypes.string.isRequired,

@@ -8,8 +8,6 @@ import Envelope from '@pagerland/icons/src/line/Envelope';
 
 import Icon from '@pagerland/common/src/components/Icon';
 
-import textToMultiline from '@pagerland/common/src/utils/textToMultiline';
-
 import * as Yup from 'yup';
 import background from './assets/escavadora.jpg';
 import background2x from './assets/escavadora@2x.jpg';
@@ -31,64 +29,85 @@ import materials22x from './assets/materials/materials-2@2x.jpg';
 import materials3 from './assets/materials/materials-3.jpg';
 import materials32x from './assets/materials/materials-3@2x.jpg';
 
-import contactImg from './assets/contact.jpg';
-import contactImg2x from './assets/contact@2x.jpg';
+import contactImg from './assets/contact.png';
+import contactImg2x from './assets/contact@2x.png';
+
+import { getUrlParameter } from './language-utils';
+
+
+function updateQueryStringParameter(uri, key, value) {
+  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+  var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+  if (uri.match(re)) {
+    return uri.replace(re, '$1' + key + "=" + value + '$2');
+  }
+  else {
+    return uri + separator + key + "=" + value;
+  }
+}
+
 
 export default {
-  title: 'Real Estate',
+  title: 'Forsen',
   navbar: {
     links: [
       {
         to: '',
         'data-to': '',
-        label: 'Inicio'
+        label: 'home'
       },
       {
         to: 'about',
         'data-to': 'about',
-        label: 'Sobre nosotros'
+        label: 'about_us'
       },
       {
         to: 'materials',
         'data-to': 'materials',
-        label: 'Materiales'
+        label: 'materials'
       },
       {
         to: 'location',
         'data-to': 'location',
-        label: 'Situación'
+        label: 'location'
       },
       {
         to: 'contact',
         'data-to': 'contact',
-        label: 'Contacto'
-      }
-    ]
+        label: 'contact'
+      } 
+    ],
+    actions: [
+      {
+        onClick: () => {
+          const language = getUrlParameter('lang', window.location.search)
+          const changeLanguageTo = language === 'cat' ? 'es' : 'cat';
+          window.location = updateQueryStringParameter(window.location.href, 'lang', changeLanguageTo)
+
+         },
+        label: (lang) => lang === 'cat' ? 'Castellano' : 'Català'
+      },
+    ],
   },
   welcome: {
     background: {
       src: background,
       srcSet: `${background} 1x, ${background2x} 2x`,
-      alt: 'Real Estate'
+      alt: 'excavadora'
     },
-    title: 'Hormigón, Áridos y Excavaciones',
-    price: '',
+    title: 'home_title',
     features: [],
     cta: {
       to: 'about',
-      children: 'Sobre nosotros'
+      children: 'about_us'
     }
   },
   about: {
-    title:
-      'Somos uns empresa familiar dedicada a la extracción, lavado, triturado y clasificado de áridos.',
-    text: 'También realizamos excavaciones y alquilamos maquinaria para obras.',
-    text2:
-      'Forsen S.L. se constituyó en el año 1992, pero sus orígenes empresariales provienen de los años 80, en actividad de extracción y venta de áridos con la dedicación y esfuerzo de nuestros trabajadores, las inversiones en maquinaria e instalaciones, la potenciación de los recursos humanos y su formación, los diferentes cambios y adaptaciones, se ha consolidado y se reconoce como FORSEN S.L.',
-    text3:
-      'En nuestra empresa fabricamos hormigón conforme instrucción EHE-OS que establece la orden ministerial 21 de noviembre de 2001 para la realización de control de producción, con observaciones propias medioambientales y de seguridad.',
-    text4:
-      'También nos estamos adaptando a la nueva normativa del REAL DECRETO 163/19 sobre hormigones.',
+    title: 'about_title',
+    text: 'about_text_1',
+    text2: 'about_text_2',
+    text3: 'about_text_3',
+    text4: 'about_text_4',
     gallery: [
       {
         source: aboutLarge1,
@@ -114,7 +133,7 @@ export default {
     ]
   },
   materials: {
-    title: 'Materiales',
+    title: 'materials',
     name: 'materials',
     sections: [
       {
@@ -122,31 +141,30 @@ export default {
           src: materials2,
           srcSet: `${materials2} 2x, ${materials22x} 2x`
         },
-        title: 'Áridos',
-        text: 'Los áridos empleados en la fabricación de hormigones y morteros, se obtienen a través de tratamientos de machaqueo, molienda y cribado de materiales naturales extraïdos de nuestra cantera.'
+        title: 'arids_title',
+        text: 'arids_text'
       },
       {
         ImgProps: {
           src: materials1,
           srcSet: `${materials1} 1x, ${materials12x} 2x`
         },
-        title: 'Hormigón',
-        text: 'Hormigones para usos estructurales en masa y armado HM y HA, con amplia gama de resistencias, relaciones agua cemento y ambientes conforme a las especificaciones de durabilidad, establecidas en las tablas 37.3.2a y 37.3.2b de la EHE-08.'
+        title: 'concrete_title',
+        text: 'concrete_text'
       },
       {
         ImgProps: {
           src: materials3,
           srcSet: `${materials3} 2x, ${materials32x} 2x`
         },
-        title: 'Excavaciones',
-        text: 'El proceso de molienda en nuestra cantera es realizado mediante molinos de impacto, por lo que la forma de las partículas obtenidas es excellente, lograndose valores muy bajos en el índice de lajas.'
+        title: 'excavations_title',
+        text: 'excavations_text'
       }
     ]
   },
   location: {
-    title: 'Situación',
-    text:
-      'Nuestra empresa se encuentra situada en las casas del rio Rosell (Provincia de Castellón). Al lado de la Sénia (Provincia de Tarragona)',
+    title: 'location',
+    text: 'location_text',
     map: {
       cords: {
         lat: 40.6383757,
@@ -155,80 +173,78 @@ export default {
     }
   },
   contact: {
-    title: 'Contacto',
+    title: 'contact',
     thumbnail: {
       src: contactImg,
       srcSet: `${contactImg} 1x, ${contactImg2x} 2x`
     },
     details: {
-      title: 'Contacta con nosotros para cualquier duda',
+      title: 'contact_title',
       text:
         '',
       info: [
         {
           icon: Building,
-          text: 'Forsen S.L.'
+          text: 'forsen_sl'
         },
         {
           icon: MapMarker,
-          text: textToMultiline`Partida Barranco Les Timbes S/N Rosell 12511 (Castellón).`
+          text: 'contact_direction'
         },
         {
           icon: Phone,
-          text: 'Raúl (Gerente) +34 629 183 121'
+          text: 'contact_phone_1'
         },
         {
           icon: Phone,
-          text: 'Joan (Encargado) +34 607 764 074'
+          text: 'contact_phone_2'
         },
         {
           icon: Envelope,
-          text: 'lina@forsen.es'
+          text: 'email'
         }
       ]  
     },
     form: {
-      title: 'Envíanos un correo si lo prefieres',
+      title: 'contact_form_title',
       sendButtonText: 'Enviar',
       validationSchema: Yup.object({
         firstName: Yup.string()
-          .max(15, 'No debe ser menor a 15 caracteres')
-          .required('Obligatorio'),
-        email: Yup.string().email('Debe ser un email válido').required('Obligatorio'),
+          .max(15, 'contact_form_15_chars')
+          .required('contact_form_required'),
+        email: Yup.string().email('contact_form_valid_email').required('contact_form_required'),
         message: Yup.string()
-          .min(20, 'No debe ser menor a 20 caracteres')
-          .required('Obligatorio')
+          .min(20, 'contact_form_20_chars')
+          .required('contact_form_required')
       }),
-      // eslint-disable-next-line no-undef
-      onSubmit: values =>
-        window.alert(`Form sent with values ${JSON.stringify(values)}`),
+     
       fields: [
         {
           name: 'firstName',
-          label: 'Nombre',
-          placeholder: 'ie. Joan Garcia ',
+          label: 'contact_form_label_name',
+          placeholder: '',
           initialValue: '',
           prefix: <Icon icon={User} />
         },
         {
           name: 'phone',
-          label: 'Teléfono',
-          placeholder: 'ej. 655-678-123',
+          label: 'contact_form_label_phone',
+          placeholder: '',
           initialValue: '',
           prefix: <Icon icon={Phone} />
         },
         {
           name: 'email',
-          label: 'E-mail',
-          placeholder: 'ej. joan.garcia@email.com',
+          label: 'contact_form_label_email',
+          placeholder: '',
           type: 'email',
           initialValue: '',
           prefix: <Icon icon={Envelope} />
         },
         {
           name: 'message',
-          label: 'Mensaje',
-          placeholder: 'Esbribe aquí...',
+          label: 'contact_form_label_message',
+          placeholder: '',
           multiline: true,
           initialValue: ''
         }
@@ -236,7 +252,10 @@ export default {
     }
   },
   footer: {
-    title: 'Forsen SL'
+    title: 'forsen_sl',
+    direction: 'contact_direction',
+    phone: 'phone',
+    email: 'email'
   },
   copyright: '© 2020 forsensl'
 };

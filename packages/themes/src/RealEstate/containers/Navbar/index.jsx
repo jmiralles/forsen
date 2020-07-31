@@ -16,6 +16,7 @@ import useIsWindowScrollMoreThan from '@pagerland/common/src/hooks/useIsWindowSc
 
 import LanderPagerLogo from '../../components/Logo';
 
+import Local from '../../Local';
 import data from '../../data';
 import {
   LogoWrapper,
@@ -47,6 +48,7 @@ const Navbar = ({
   const { ref, setActiveMenu, indicatorWidth, indicatorLeft } = useActiveIndicator();
   const isNavbarSticky = useIsWindowScrollMoreThan(0);
 
+
   const menu = onClick => (
     <>
       {links && (
@@ -54,7 +56,7 @@ const Navbar = ({
           {links.map(({ label, ...link }, i) => (
             <List.Item key={i}>
               <NavbarLink onSetActive={setActiveMenu} {...LinkProps} onClick={onClick} {...link}>
-                {label}
+                <Local code={label} />
               </NavbarLink>
             </List.Item>
           ))}
@@ -64,8 +66,8 @@ const Navbar = ({
         <Box {...ActionsWrapperProps}>
           {actions.map(({ label, ...link }, i) => (
             <Button {...ActionProps} onClick={onClick} {...link} key={i}>
-              {label}
-            </Button>
+                <Local getLabel={label} />
+             </Button>
           ))}
         </Box>
       )}
@@ -132,14 +134,14 @@ Navbar.propTypes = {
     PropTypes.shape({
       as: PropTypes.elementType,
       to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-      label: PropTypes.node.isRequired,
+      label: PropTypes.func.isRequired,
     }),
   ),
   actions: PropTypes.arrayOf(
     PropTypes.shape({
       as: PropTypes.elementType,
       to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-      label: PropTypes.node.isRequired,
+      label: PropTypes.func.isRequired,
     }),
   ),
 };

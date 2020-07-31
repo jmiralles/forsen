@@ -8,7 +8,7 @@ import Container from '@pagerland/common/src/components/Container';
 import Typography from '@pagerland/common/src/components/Typography';
 
 import ArrowRight from '@pagerland/icons/src/line/ArrowRight';
-
+import Local from '../../Local';
 import data from '../../data';
 
 const Footer = ({
@@ -18,15 +18,19 @@ const Footer = ({
   WrapperProps,
   ContainerProps,
   TitleProps,
+  TextProps,
   CopyrightWrapperProps,
   CopyrightTextProps,
+  direction,
+  phone,
+  email
 }) => (
   <Box name={name} {...WrapperProps}>
     <Container {...ContainerProps}>
       <Fade cascade bottom duration={600}>
-        <Typography {...TitleProps}>{title}</Typography>
+        <Typography {...TitleProps}><Local code={title} /></Typography>
       </Fade>
-
+      <Typography {...TextProps}><Local code={direction} /> | <Local code={phone} /> | <Local code={email} /></Typography>
       <Box {...CopyrightWrapperProps}>
         <Typography {...CopyrightTextProps}>{copyright}</Typography>
       </Box>
