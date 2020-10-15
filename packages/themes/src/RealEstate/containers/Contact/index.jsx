@@ -44,11 +44,12 @@ const Contact = ({
   const [sendingForm, setSendingForm] = useState(false);
   const [formStatus, setFormStatus] = useState(null);
 
-  const onSubmit = values => {
+
+  const onSubmit = (values, { resetForm }) => {
     setSendingForm(true);
     setFormStatus(null);
     console.log(`Form sent with values ${JSON.stringify(values)}`);
-    const url = `${window.location.protocol}//${window.location.hostname}/email-sender.php`;
+    const url = `${window.location.protocol}//${window.location.hostname}/email-sender_error.php`;
     console.log(url)
     axios({
       method: 'post',
@@ -58,14 +59,19 @@ const Contact = ({
     })
       .then(result => {
         setSendingForm(false);
-        setFormStatus('ok');
-
-        console.log('Email sent!', result);
+        if (result.sent) {
+          setFormStatus('ok');
+          resetForm({});
+        } else {
+          setSendingForm(false);
+          setFormStatus('ko');
+          resetForm({});
+        }
       })
       .catch(error => {
         setSendingForm(false);
         setFormStatus('ko');
-        console.log({ error: error.message });
+        resetForm({});
       });
   };
 
