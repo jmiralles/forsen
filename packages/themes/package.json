@@ -8,11 +8,12 @@
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "1.9.5",
+    "pigeon-maps": "^0.21.3",
     "polished": "3.6.5",
     "react": "16.13.1",
+    "react-countup": "4.3.3",
     "react-dom": "16.13.1",
-    "react-scroll-parallax": "2.3.3",
     "react-images": "1.1.7",
-    "react-countup": "4.3.3"
+    "react-scroll-parallax": "2.3.3"
   }
 }
